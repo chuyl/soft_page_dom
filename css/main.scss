@@ -2,6 +2,7 @@
 @import 'animate.css';
 @import 'color';
 @import 'font';
+@import 'mixins/gird_define';
 
 .soft_largest_box {
     width: 100%;
@@ -359,29 +360,22 @@
 .soft_act_content {
     float: right;
     width: 100%;
-    height: 580px;
-    position: relative;
+    // height: 580px;
+    // position: relative;
     box-shadow: 0px 1px 29px 0px rgba(136, 56, 244, 0.18);
 }
 
-.soft_act_content1 {
-    padding-bottom: 2em;
-}
-
-.soft_act_content3 {
-    background-color: #ffffff;
-}
-
+.soft_act_content1,
 .soft_act_content2,
 .soft_act_content3 {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    padding: 5% 0% 2% 0%;
+    padding: 2em 1em; 
 
-    @media screen and (max-width: 768px) {
+    @include tablet{
         overflow: scroll;
-        padding: 0;
+        padding: 2em 0;
     }
 }
 
@@ -394,7 +388,7 @@
 .soft_act_content1,
 .soft_act_content2,
 .soft_act_content3 {
-    position: absolute;
+    // position: absolute;
     display: none;
     transition: 0.3s opacity ease-in-out;
 }
@@ -526,7 +520,7 @@
         line-height: 2em;
         border-radius: 2px;
         float: left;
-        padding-left: 2em;
+        padding: .25em 1em .25em 3em;
         position: relative;
         text-align: center;
 
@@ -539,8 +533,8 @@
     a.button::before {
         content: ' ';
         position: absolute;
-        left: 0.3em;
-        top: 0.3em;
+        left: 0.6em;
+        top: 0.5em;
         display: block;
         width: 1.5em;
         height: 1.5em;
@@ -563,7 +557,10 @@
 
 .soft_act_content1 {
     overflow: hidden;
-    padding-top: 5%;
+    background-image: url(src/onlinebg-01.png);
+    background-size: 1100px 450px;
+    background-position: center 0;
+    background-repeat: no-repeat;
 
     ul {
         float: left;
@@ -580,9 +577,10 @@
             width: 100%;
             padding-left: 20%;
             padding-bottom: 2em;
-
+            background-color: #ffffffee;
             @media screen and (max-width: 768px) {
                 padding: 0;
+                font-size: 1em;
             }
 
             span {
@@ -597,6 +595,10 @@
 
             span:nth-of-type(2) {
                 font-size: 1.2em;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 1em;
+                }
             }
         }
     }
@@ -604,11 +606,6 @@
     ul:last-child {
         border: 0;
     }
-}
-
-// 考试信息区域
-.soft_act_content2 {
-    padding-top: 2em;
 }
 
 .soft_info_content {
@@ -840,7 +837,7 @@
     width: 100%;
     margin: auto;
 
-    @media screen and (max-width: 768px) {
+    @include tablet {
         padding: 0;
     }
 
@@ -859,8 +856,11 @@
             color: $primary-color-text;
         }
 
-        @media screen and (max-width:768px) {
-            margin-bottom: 2em;
+        @include tablet {
+            margin-bottom: 1em;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            height: initial;
         }
     }
 
@@ -879,6 +879,11 @@
     .soft_learn_logo {
         width: 100%;
 
+        @include tablet {
+            width: initial;
+            float: left;
+            margin: 0 0 0 1em;
+        }
         img {
             display: block;
             margin: auto;
@@ -888,8 +893,12 @@
     }
 
     .soft_learn_text {
-        padding-top: 4em;
         overflow: hidden;
+        padding-top: 4em;
+
+        @include tablet {
+            padding-top: 0em;
+        }
 
         span {
             float: left;
@@ -923,7 +932,6 @@
 
     .soft_lesson_left,
     .soft_lesson_right {
-        float: left;
         padding: 0;
     }
 
@@ -938,20 +946,34 @@
                     width: 100%;
                     color: $primary-color;
                     background-color: $bgc-light;
-                    padding-left: 8em;
-
+                    padding-left: 1em;
+                    padding-top:3em;
+                    height: 124px;
+                    @include tablet{
+                        width: 33%;
+                        height: initial;
+                    }
                     span {
                         float: left;
                         width: 100%;
-                        line-height: 62px;
+                        text-align: center;
+                        @include tablet{
+                            text-align: left;
+                        }
                     }
 
                     span:first-child {
                         font-size: 1.2em;
+                        @include tablet{
+                            font-size: 1em;
+                        }
                     }
 
                     span:nth-of-type(2) {
                         font-size: 1.5em;
+                        @include tablet{
+                            font-size: 1.2em;
+                        }
                     }
                 }
 
@@ -959,12 +981,20 @@
                     position: absolute;
                     content: ' ';
                     display: block;
-                    width: 3em;
-                    height: 3.5em;
-                    left: 3em;
-                    top: 3em;
+                    width: 2em;
+                    height: 2.5em;
+                    left: 50%;
+                    margin-left: -0.5em;
+                    top: 1em;
                     background-size: contain;
                     background-repeat: no-repeat;
+                    @include tablet{
+                        width: 2em;
+                        height: 2.5em;
+                        left: 1em;
+                        margin-left: 0;
+                        top: 1em;
+                    }
                 }
 
                 li:first-child::before {
@@ -1016,10 +1046,16 @@
 
 .soft_lesson_content {
     height: 372px;
+    @include tablet{
+        height: initial;
+    }
     width: 100%;
     background-position-y: 0.7em;
     border-top: 1px solid $lesson_border_color;
     border-bottom: 1px solid $lesson_border_color;
+    .row > div{
+        padding:0;
+    }
 }
 
 .soft_lesson_top {
@@ -1263,11 +1299,10 @@
 }
 
 .soft_title_box {
-    padding-top: 2em;
-    padding-bottom: 3em;
+    padding: 2em 0;
 
     @media screen and (max-width: 768px) {
-        padding: 0;
+        padding: 2em 0;
     }
 }
 
@@ -1639,9 +1674,9 @@
 
     .soft_open_qi {
         float: left;
-        margin-right: 2%;
+        // margin-right: 2%;
         padding: 0;
-        width: 23%;
+        // width: 23%;
         overflow: hidden;
         margin-bottom: 1em;
 

@@ -1,7 +1,6 @@
 // // 获取url以及数据的 array
 var address_data = new Array(["a", 2, "s"])
 // 获取token转化为cookie
-
 function setCookie(c_name, value, expiredays) {
     var exdate = new Date()
     exdate.setDate(exdate.getDate() + expiredays)
@@ -37,8 +36,6 @@ $(document).ready(function () {
 
 
     });
-
-
 })
 // 判断模态框是否显示
 
@@ -336,7 +333,7 @@ $(document).ready(function () {
             $(".soft_top_tab ").addClass("active").removeClass("hide1 default");
         }
         if ($(".soft_top_tab").offset().top < 300) {
-            console.log('dsada');
+            console.log('move mousewheel');
             $(".soft_top_tab ").addClass("active").removeClass("hide1 default");
         }
     });
@@ -466,3 +463,21 @@ $(window).scroll(function () {
         }
     }
 });
+
+
+// start 咨询链接
+function add_baidu_zixun(){
+    var baidu_shangqiao_url = "http://p.qiao.baidu.com/cps/chat?siteId=13477&amp;userId=1005271&amp;cp=www.csst.com.cn%2Fruankao_pm%2F&amp;cr=www.baidu.com&amp;cw=%E8%BD%AF%E8%80%83%E5%B9%BF%E5%91%8A";
+    var baidu_zixun_classname = "baidu_zixun";
+    add_zixun(baidu_zixun_classname,baidu_shangqiao_url);
+};
+function add_zixun(classname,url){
+    $("[data-action-api='"+classname+"']").bind("click",function(){
+        var newWeb=window.open('_blank');
+        newWeb.location= url;
+    });
+}
+$(document).ready(function () {
+    add_baidu_zixun();
+})
+// end 咨询链接
